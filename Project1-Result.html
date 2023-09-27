@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Shengda Hu">
+
+<title>Project 1 - Result</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Project1-Result_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Project1-Result_files/libs/quarto-html/quarto.js"></script>
+<script src="Project1-Result_files/libs/quarto-html/popper.min.js"></script>
+<script src="Project1-Result_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Project1-Result_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Project1-Result_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Project1-Result_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Project1-Result_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Project1-Result_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Project1-Result_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#project-1.-a-case-study-storms" id="toc-project-1.-a-case-study-storms" class="nav-link active" data-scroll-target="#project-1.-a-case-study-storms"><span class="header-section-number">1</span> Project 1. A case study: <code>storms</code></a>
+  <ul class="collapse">
+  <li><a href="#team-members" id="toc-team-members" class="nav-link" data-scroll-target="#team-members"><span class="header-section-number">1.1</span> Team members:</a></li>
+  <li><a href="#overview-of-the-data" id="toc-overview-of-the-data" class="nav-link" data-scroll-target="#overview-of-the-data"><span class="header-section-number">1.2</span> Overview of the data</a></li>
+  <li><a href="#rough-idea" id="toc-rough-idea" class="nav-link" data-scroll-target="#rough-idea"><span class="header-section-number">1.3</span> Rough idea</a></li>
+  <li><a href="#a-bit-more-details" id="toc-a-bit-more-details" class="nav-link" data-scroll-target="#a-bit-more-details"><span class="header-section-number">1.4</span> A bit more details</a></li>
+  <li><a href="#review-the-data-and-make-adjustments" id="toc-review-the-data-and-make-adjustments" class="nav-link" data-scroll-target="#review-the-data-and-make-adjustments"><span class="header-section-number">1.5</span> Review the data and make adjustments</a></li>
+  <li><a href="#simple-learning-from-the-data" id="toc-simple-learning-from-the-data" class="nav-link" data-scroll-target="#simple-learning-from-the-data"><span class="header-section-number">1.6</span> Simple learning from the data</a></li>
+  <li><a href="#getting-more-details-on-individual-storms" id="toc-getting-more-details-on-individual-storms" class="nav-link" data-scroll-target="#getting-more-details-on-individual-storms"><span class="header-section-number">1.7</span> Getting more details on individual storms</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Project1-Result.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Project 1 - Result</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shengda Hu </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="project-1.-a-case-study-storms" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Project 1. A case study: <code>storms</code></h1>
+<section id="team-members" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="team-members"><span class="header-section-number">1.1</span> Team members:</h2>
+<table class="table">
+<caption>Members and contribution</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 29%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Student ID</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th><span class="citation" data-cites="mylaurier.ca">@mylaurier.ca</span> Email</th>
+<th>Contributions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code>Provide further details on contributions from the team members below:</code></pre>
+<p><strong>NOTE</strong>: If you have used AI(s) in producing some of your work, please list the respective AI(s) as a collaborator in the <strong>Team members</strong> table above. In this case, please also describe the contribution from the input of the AI(s) in the textbox above, as well as provide details on how you have used the AI(s) in the process.</p>
+</section>
+<section id="overview-of-the-data" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="overview-of-the-data"><span class="header-section-number">1.2</span> Overview of the data</h2>
+<p>We will work with the <code>storms</code> data set coming with the <code>dplyr</code> package.</p>
+<p><code>storms</code>: from NOAA Atlantic hurricane database, measured every 6 hours during the lifetime of a storm.</p>
+<p>Use <code>select</code> to see the numerical, character, and factor variables in the dataframe.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,066 × 11
+    year month   day  hour   lat  long category  wind pressure
+   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;
+ 1  1975     6    27     0  27.5 -79         NA    25     1013
+ 2  1975     6    27     6  28.5 -79         NA    25     1013
+ 3  1975     6    27    12  29.5 -79         NA    25     1013
+ 4  1975     6    27    18  30.5 -79         NA    25     1013
+ 5  1975     6    28     0  31.5 -78.8       NA    25     1012
+ 6  1975     6    28     6  32.4 -78.7       NA    25     1012
+ 7  1975     6    28    12  33.3 -78         NA    25     1011
+ 8  1975     6    28    18  34   -77         NA    30     1006
+ 9  1975     6    29     0  34.4 -75.8       NA    35     1004
+10  1975     6    29     6  34   -74.8       NA    40     1002
+# ℹ 19,056 more rows
+# ℹ 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+#   hurricane_force_diameter &lt;int&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,066 × 1
+   name 
+   &lt;chr&gt;
+ 1 Amy  
+ 2 Amy  
+ 3 Amy  
+ 4 Amy  
+ 5 Amy  
+ 6 Amy  
+ 7 Amy  
+ 8 Amy  
+ 9 Amy  
+10 Amy  
+# ℹ 19,056 more rows</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,066 × 1
+   status             
+   &lt;fct&gt;              
+ 1 tropical depression
+ 2 tropical depression
+ 3 tropical depression
+ 4 tropical depression
+ 5 tropical depression
+ 6 tropical depression
+ 7 tropical depression
+ 8 tropical depression
+ 9 tropical storm     
+10 tropical storm     
+# ℹ 19,056 more rows</code></pre>
+</div>
+</div>
+<p>One thing to notice is that <code>category</code> has integer value, but is of <code>double</code> type. We can see this by getting the distinct values for the <code>category</code> variable.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 1
+  category
+     &lt;dbl&gt;
+1       NA
+2        1
+3        3
+4        2
+5        4
+6        5</code></pre>
+</div>
+</div>
+<p>We will later create a new <code>ordinal</code> type (a special <code>&lt;fctr&gt;</code> type) variable to capture the same information.</p>
+</section>
+<section id="rough-idea" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="rough-idea"><span class="header-section-number">1.3</span> Rough idea</h2>
+<p>Get some rough idea on the whole data set, such as period and (rough) total number of storms recorded. Here we follow the reasonable idea that the storms are uniquely determined by the <code>year</code> and <code>name</code>.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  start_year end_year count
+       &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+1       1975     2021   639</code></pre>
+</div>
+</div>
+<p>Can summarize along other variables to see their ranges, such as storm strength (in terms of wind speed) and the latitudes storms go to in each year.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 47 × 5
+    year min_wind max_wind min_lat max_lat
+   &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1  1975       20      120    10.3    55  
+ 2  1976       20      105    12.5    46.5
+ 3  1977       20      150    17.2    49.5
+ 4  1978       15      120    12      57  
+ 5  1979       15      150    10      52.5
+ 6  1980       20      165    10.7    54  
+ 7  1981       20      115    10.5    45.1
+ 8  1982       20      115    13.7    51.8
+ 9  1983       20      100    25.1    41.7
+10  1984       15      115    10.5    46.2
+# ℹ 37 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="a-bit-more-details" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="a-bit-more-details"><span class="header-section-number">1.4</span> A bit more details</h2>
+<p>Learn about how the <code>category</code> corresponds to the <code>status</code>, which is basically <code>covariance</code> between two <code>categorical</code> variables, using <code>geom_count()</code>.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 14382 rows containing non-finite values (`stat_sum()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>It does not seem to be interesting, since all the dots are on the same row. <strong>BUT</strong> read the <code>Warning</code> message shown on top of the plot</p>
+<ul>
+<li><code>Removed 14382 rows containing non-finite values</code></li>
+</ul>
+<p>From previous outputs, we see that there must be <code>NA</code> values for <code>category</code> corresponding to other <code>status</code> values. So, it actually indicates</p>
+<ul>
+<li><code>category</code> is only assigned for <code>hurricane</code>s</li>
+</ul>
+<p>Also, from the sizes of the dots, it conforms to the expectation that higher categories contain fewer number of hurricanes.</p>
+</section>
+<section id="review-the-data-and-make-adjustments" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="review-the-data-and-make-adjustments"><span class="header-section-number">1.5</span> Review the data and make adjustments</h2>
+<p>We are not experts in hurricanes, but with enough data and enough time to mess around, we can learn quite a bit. For instance, plotting <code>status</code> v.s. <code>wind</code> speed could inform us of how the storms are classified, besides the actual <code>status</code> names that already contain some information.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We see that the <em>depression</em>s, <em>storm</em>s and <em>hurricane</em>s are quite neatly separated; while the rest of them, <em>disturbance</em>s, <em>other low</em>s, <em>tropical wave</em>s and <em>extratropical</em>s are not exactly cleanly defined. Especially, <em>other low</em> and <em>extratropical</em> covers quite large variations of wind speed, which is reflected in their names sounding like catch-alls.</p>
+<p><strong>One issue</strong>: Probably <strong>one</strong> <code>tropical storm</code> with a <code>hurricane</code> strength <code>wind</code>.</p>
+<p>Check it out by filtering for a <code>tropical storm</code> that has wind speed larger than <code>65</code>.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 13
+  name   year month   day  hour   lat  long status       category  wind pressure
+  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;           &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;
+1 Emily  2005     7    20    18    25 -98.7 tropical st…       NA    70      975
+# ℹ 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+#   hurricane_force_diameter &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>So it is storm <code>Emily</code> in <code>2005</code>. Let’s find out more about the particular storm, by filtering for all the rows about the named storm in the given year.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 45 × 13
+   name   year month   day  hour   lat  long status      category  wind pressure
+   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;          &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;
+ 1 Emily  2005     7    11     0  10.7 -42.4 tropical d…       NA    25     1010
+ 2 Emily  2005     7    11     6  10.8 -43.4 tropical d…       NA    30     1009
+ 3 Emily  2005     7    11    12  10.9 -44.4 tropical d…       NA    30     1009
+ 4 Emily  2005     7    11    18  11   -45.4 tropical d…       NA    30     1007
+ 5 Emily  2005     7    12     0  11   -46.8 tropical s…       NA    35     1006
+ 6 Emily  2005     7    12     6  11   -48.5 tropical s…       NA    40     1005
+ 7 Emily  2005     7    12    12  11   -50.2 tropical s…       NA    45     1004
+ 8 Emily  2005     7    12    18  11   -52   tropical s…       NA    45     1004
+ 9 Emily  2005     7    13     0  11   -53.7 tropical s…       NA    45     1003
+10 Emily  2005     7    13     6  11.1 -55.4 tropical s…       NA    45     1003
+# ℹ 35 more rows
+# ℹ 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+#   hurricane_force_diameter &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>Looks like the offending entry is the last one before <code>Emily</code> ceased to have hurricane wind strength. We’ll chalk it up with data input error. We can replot, color <code>Emily</code> observations <code>red</code>, and label the offending record by <code>Emily</code>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To make sure that we found the offending case, we can replot the thing filtering out that particular row.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can also change the particular row, instead of throwing it out, using the <code>if_else</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(new_storms <span class="ot">&lt;-</span> storms <span class="sc">|&gt;</span> <span class="co"># not recommended to use the same variable name</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="fu">if_else</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span>((name <span class="sc">==</span> <span class="st">'Emily'</span>) <span class="sc">&amp;</span> (year <span class="sc">==</span> <span class="dv">2005</span>) <span class="sc">&amp;</span> (month <span class="sc">==</span> <span class="dv">7</span>) <span class="sc">&amp;</span> (day <span class="sc">==</span> <span class="dv">20</span>) <span class="sc">&amp;</span> (hour <span class="sc">==</span> <span class="dv">18</span>)),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      status,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">'hurricane'</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">category =</span> <span class="fu">if_else</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span>((name <span class="sc">==</span> <span class="st">'Emily'</span>) <span class="sc">&amp;</span> (year <span class="sc">==</span> <span class="dv">2005</span>) <span class="sc">&amp;</span> (month <span class="sc">==</span> <span class="dv">7</span>) <span class="sc">&amp;</span> (day <span class="sc">==</span> <span class="dv">20</span>) <span class="sc">&amp;</span> (hour <span class="sc">==</span> <span class="dv">18</span>)),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      category,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,066 × 13
+   name   year month   day  hour   lat  long status      category  wind pressure
+   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;
+ 1 Amy    1975     6    27     0  27.5 -79   tropical d…       NA    25     1013
+ 2 Amy    1975     6    27     6  28.5 -79   tropical d…       NA    25     1013
+ 3 Amy    1975     6    27    12  29.5 -79   tropical d…       NA    25     1013
+ 4 Amy    1975     6    27    18  30.5 -79   tropical d…       NA    25     1013
+ 5 Amy    1975     6    28     0  31.5 -78.8 tropical d…       NA    25     1012
+ 6 Amy    1975     6    28     6  32.4 -78.7 tropical d…       NA    25     1012
+ 7 Amy    1975     6    28    12  33.3 -78   tropical d…       NA    25     1011
+ 8 Amy    1975     6    28    18  34   -77   tropical d…       NA    30     1006
+ 9 Amy    1975     6    29     0  34.4 -75.8 tropical s…       NA    35     1004
+10 Amy    1975     6    29     6  34   -74.8 tropical s…       NA    40     1002
+# ℹ 19,056 more rows
+# ℹ 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+#   hurricane_force_diameter &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>Then make a new variable <code>factor_cat</code> with levels from <code>0</code> up to <code>5</code>, and assign level <code>0</code> when the value of <code>category</code> is <em>missing</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(new2_storms <span class="ot">&lt;-</span> new_storms <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">factor_cat =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(category), <span class="dv">0</span>, category) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">factor</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ordered =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        ) <span class="co"># create `factor_cat` to be category as &lt;ord&gt; type</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,066 × 14
+   name   year month   day  hour   lat  long status      category  wind pressure
+   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;
+ 1 Amy    1975     6    27     0  27.5 -79   tropical d…       NA    25     1013
+ 2 Amy    1975     6    27     6  28.5 -79   tropical d…       NA    25     1013
+ 3 Amy    1975     6    27    12  29.5 -79   tropical d…       NA    25     1013
+ 4 Amy    1975     6    27    18  30.5 -79   tropical d…       NA    25     1013
+ 5 Amy    1975     6    28     0  31.5 -78.8 tropical d…       NA    25     1012
+ 6 Amy    1975     6    28     6  32.4 -78.7 tropical d…       NA    25     1012
+ 7 Amy    1975     6    28    12  33.3 -78   tropical d…       NA    25     1011
+ 8 Amy    1975     6    28    18  34   -77   tropical d…       NA    30     1006
+ 9 Amy    1975     6    29     0  34.4 -75.8 tropical s…       NA    35     1004
+10 Amy    1975     6    29     6  34   -74.8 tropical s…       NA    40     1002
+# ℹ 19,056 more rows
+# ℹ 3 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+#   hurricane_force_diameter &lt;int&gt;, factor_cat &lt;ord&gt;</code></pre>
+</div>
+</div>
+<p><strong>Comment</strong>: <code>if_else(CONDITION, TRUE_output, FALSE_output)</code> is a function that computes the <code>CONDITION</code> first, and if the <code>CONDITION</code> evaluates to <code>TRUE</code> it returns the <code>TRUE_output</code>; while if the <code>CONDITION</code> evaluates to <code>FALSE</code>, it returns the <code>FALSE_output</code>.</p>
+<p>After this,</p>
+<ul>
+<li><code>new2_storms</code> have <em>correct</em> information concerning <code>status</code> and <code>wind</code> speed, as far as we understand,</li>
+<li>the <code>factor_cat</code> variable in <code>new2_storms</code> is of <code>&lt;ord&gt;</code> type, with the same information as the <code>category</code> variable.</li>
+</ul>
+<p>We can plot it and label where the corrected data point for <code>Emily</code> goes in red again.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Using <code>geom_density_ridges</code> shows distributions better than just the scatter plot.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 1.8</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="simple-learning-from-the-data" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="simple-learning-from-the-data"><span class="header-section-number">1.6</span> Simple learning from the data</h2>
+<p>Using similar method, we can see the definition of the <code>category</code> of a hurricane – even though a simple google or <code>?storms</code> would already give us the information. First issue is that the <code>category</code> is NOT a categorical variable and plotting using it causes various issues. Luckily, we already have a categorical variable <code>factor_cat</code> carrying the same information.</p>
+<p><strong>Comment</strong>: We are not using the full power of a <code>factor</code> type variable here. Will come back to <code>factor</code> later.</p>
+<p>We compare the output of <code>geom_jitter</code> and <code>geom_density_ridges</code> plots of the category <code>factor_cat</code> against <code>wind</code> speed, for the <code>hurricane</code>s.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 1.35</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The pattern indicates that data are boxed in, most likely artificially, as there is no way storms box themselves in. Indeed, the notion of category is a concept designed to help human understanding. We can get more details concerning the criteria, even if we know nothing <em>a priori</em> about what the rules are, by finding the boundaries defining each category.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  category min_wind max_wind
+     &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;
+1        1       65       80
+2        2       85       95
+3        3      100      110
+4        4      115      135
+5        5      140      165
+6       NA       10      105</code></pre>
+</div>
+</div>
+<p>The strength of a storm is related to the air pressure, so they say. We can see how it is, using simple boxplot or ridge plots. It indeed justifies what we hear. Note that the <em>standard atmospheric pressure</em> is slightly above <span class="math inline">\(1\)</span> bar, (at <span class="math inline">\(1.01325\)</span> bar, see <a href="https://en.wikipedia.org/wiki/Bar_(unit)">the Wikipedia</a>).</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 2.05</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Some averages don’t make sense, at least not obviously. For example, the following computes the average strength for wind speed recorded in each year.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>new_storms <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_wind =</span> <span class="fu">mean</span>(wind, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> year</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 47 × 2
+    year mean_wind
+   &lt;dbl&gt;     &lt;dbl&gt;
+ 1  1975      52.4
+ 2  1976      56.3
+ 3  1977      49.0
+ 4  1978      51.6
+ 5  1979      47.9
+ 6  1980      60.8
+ 7  1981      51.8
+ 8  1982      48.6
+ 9  1983      45  
+10  1984      48.4
+# ℹ 37 more rows</code></pre>
+</div>
+</div>
+<p>We cannot be exactly sure if the answer makes any sense at all. The average could be low for many reasons, for instance, maybe more low speeds are kept in the record for some years than others. Moreover, it is the strongest wind speed that do most of the damages, which can not be reflected by the average alone.</p>
+</section>
+<section id="getting-more-details-on-individual-storms" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="getting-more-details-on-individual-storms"><span class="header-section-number">1.7</span> Getting more details on individual storms</h2>
+<p>Look at individual storms</p>
+<ul>
+<li>Storms are named individually in each year, while the same name may be reused across different years.</li>
+</ul>
+<p>We will take the difference of the <code>first_day</code> and the <code>last_day</code> as the length of the storm, even though there might be exceptions to this rule.</p>
+<p>First, <code>summarize</code> by individual storms.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>storms_by_storm <span class="ot">&lt;-</span> new2_storms <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">make_date</span>(year, month, day)  <span class="co"># &lt;- from lubridate package</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">|&gt;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">first_day =</span> <span class="fu">min</span>(date),</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_day =</span> <span class="fu">max</span>(date),</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">days =</span> <span class="fu">n_distinct</span>(month, day), <span class="co"># gives the actual number of days</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_cat =</span> <span class="fu">max</span>(category <span class="sc">|&gt;</span> <span class="fu">replace_na</span>(<span class="dv">0</span>)), <span class="co"># this is numerical</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_cat =</span> <span class="fu">median</span>(category <span class="sc">|&gt;</span> <span class="fu">replace_na</span>(<span class="dv">0</span>)),</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">factor_max_cat =</span> <span class="fu">max</span>(factor_cat),</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_wind =</span> <span class="fu">max</span>(wind),</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_wind =</span> <span class="fu">median</span>(wind, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_hu_diam =</span> <span class="fu">mean</span>(hurricane_force_diameter, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># test using na.rm = TRUE</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_hu_diam =</span> <span class="fu">max</span>(hurricane_force_diameter),</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_pressure =</span> <span class="fu">min</span>(pressure, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_pressure =</span> <span class="fu">median</span>(pressure, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(year, name)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(storms_by_storm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 639
+Columns: 14
+$ year            &lt;dbl&gt; 1975, 1975, 1975, 1975, 1975, 1975, 1975, 1975, 1976, …
+$ name            &lt;chr&gt; "Amy", "Blanche", "Caroline", "Doris", "Eloise", "Faye…
+$ first_day       &lt;date&gt; 1975-06-27, 1975-07-24, 1975-08-24, 1975-08-28, 1975-…
+$ last_day        &lt;date&gt; 1975-07-04, 1975-07-28, 1975-09-01, 1975-09-04, 1975-…
+$ days            &lt;int&gt; 8, 5, 9, 8, 12, 6, 13, 5, 5, 4, 6, 15, 8, 10, 5, 6, 7,…
+$ max_cat         &lt;dbl&gt; 0, 1, 3, 2, 3, 2, 4, 0, 3, 0, 1, 2, 3, 2, 1, 5, 1, 1, …
+$ med_cat         &lt;dbl&gt; 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, …
+$ factor_max_cat  &lt;ord&gt; 0, 1, 3, 2, 3, 2, 4, 0, 3, 0, 1, 2, 3, 2, 1, 5, 1, 1, …
+$ max_wind        &lt;int&gt; 60, 75, 100, 95, 110, 90, 120, 45, 105, 45, 80, 90, 10…
+$ median_wind     &lt;dbl&gt; 50.0, 35.0, 25.0, 65.0, 37.5, 75.0, 65.0, 30.0, 75.0, …
+$ avg_hu_diam     &lt;dbl&gt; NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN,…
+$ max_hu_diam     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ min_pressure    &lt;int&gt; 981, 980, 963, 965, 955, 977, 939, 1002, 957, 996, 964…
+$ median_pressure &lt;dbl&gt; 987.0, 1003.5, 1010.0, 990.0, 1000.0, 985.0, 990.0, 10…</code></pre>
+</div>
+</div>
+<p>We can look at the number of storms in each year, colored to gain details on maximal strength as <code>factor_max_cat</code></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In an individual year (e.g.&nbsp;<span class="math inline">\(2021\)</span>), we can try to visualize the duration of storms, including their maximal strengths.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can also look at the number of storms in terms of their lifetime duration, together with the information on the maximal category they reached by a bar chart.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Or with a combined boxplot and ridges plot</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 1.34</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Project1-Result_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>While the project will end here, the next step should be more exploratory data analysis, and build models.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
