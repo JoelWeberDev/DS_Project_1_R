@@ -296,7 +296,7 @@ correct_emily <- new2_storms |>
 
 (correct_emily_plot <- new2_storms |> 
     filter(
-      !((name == 'Emily') & (year == 2005) & (month == 7) & (day == 20) & (hour == 18))
+     !( (name == 'Emily') & (year == 2005) & (month == 7) & (day == 20) & (hour == 18)) 
     ) |>
   ggplot(mapping = aes(x = wind, y = status)) +
     geom_jitter(alpha = 0.3) +
