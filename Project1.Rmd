@@ -31,7 +31,7 @@ library(ggridges)
 
 | Student ID | First Name | Last Name | @mylaurier.ca Email | Contributions |
 |------------|------------|-----------|---------------------|---------------|
-|169025972   |Joel        |Weber      |webe5972@mylaurier.ca|               |
+|169025972   |Joel        |Weber      |webe5972@mylaurier.ca| ln 1 - ln 308 |
 |            |            |           |                     |               |
 |            |            |           |                     |               |
 |            |            |           |                     |               |
@@ -100,9 +100,11 @@ Get some rough idea on the whole data set, such as period and (rough) total numb
 Can summarize along other variables to see their ranges, such as storm strength (in terms of wind speed) and the latitudes storms go to in each year.
 
 ```{r error=TRUE, tags=c()}
-(storm_range <- storms
-# YOUR CODE HERE
+(storm_range <- storms |> 
+   summarize(.by = year, min_wind = min(wind), max_wind = max(wind), min_lat = min(lat), max_lat = max(lat)) |> 
+   distinct(year,.keep_all = TRUE)
 )
+
 ```
 ```{r error=TRUE}
 . = ottr::check("tests/RoughIdea1.R")
@@ -113,9 +115,10 @@ Can summarize along other variables to see their ranges, such as storm strength 
 Learn about how the `category` corresponds to the `status`, which is basically `covariance` between two `categorical` variables, using `geom_count()`.
 
 ```{r error=TRUE, tags=c()}
-(cat_status_plot <- storms
-   # YOUR CODE HERE
+(cat_status_plot <- storms |>
+  ggplot(mapping = aes(x = category, y = status)) + geom_count()
 )
+
 ```
 ```{r error=TRUE}
 . = ottr::check("tests/ReviewDataS.R")
@@ -144,8 +147,10 @@ status_wind_labels <- labs(
     caption = "Data from storms dataframe"
   )
 
-(status_wind_plot <- storms
-  # YOUR CODE HERE
+# storms
+(status_wind_plot <- storms |>
+  ggplot(mapping = aes(x = wind, y = status)) + geom_jitter(alpha = 0.3) +
+  status_wind_labels
 )
 ```
 ```{r error=TRUE}
@@ -159,9 +164,11 @@ We see that the *depression*s, *storm*s and *hurricane*s are quite neatly separa
 Check it out by filtering for a `tropical storm` that has wind speed larger than `65`.
 
 ```{r error=TRUE, tags=c()}
+# storms |> colnames()
 (wrong_status <- storms |> 
   filter(
-   # YOUR CODE HERE
+    status == "tropical storm",
+    wind > 65
     )
 )
 ```
@@ -172,8 +179,8 @@ Check it out by filtering for a `tropical storm` that has wind speed larger than
 So it is storm `Emily` in `2005`. Let's find out more about the particular storm, by filtering for all the rows about the named storm in the given year.
 
 ```{r error=TRUE, tags=c()}
-(emily_2005 <- storms
-   # YOUR CODE HERE
+(emily_2005 <- storms |> 
+ filter(name == "Emily" & year == 2005)
 )
 ```
 ```{r error=TRUE}
@@ -184,15 +191,22 @@ Looks like the offending entry is the last one before `Emily` ceased to have hur
 
 ```{r error=TRUE, tags=c()}
 emily_label <- labs(
-    # YOUR CODE HERE
+  x = "Maximum sustained wind speed (knot)",
+  y = "Storm status, with no particular order",
+  title = "The status of a storm provides information on the wind speed",
+  subtitle = "With storm Emily 2005 highlighted and the wrong point labeled",
+  caption = "Data from storms dataframe"
   )
 (label_emily_plot <- storms |>
   filter(
-    # YOUR CODE HERE
+    !(name == "Emily" & year == 2005)
     ) |>
-  # YOUR CODE HERE
+  ggplot(mapping = aes(x = wind, y = status)) + 
+  geom_jitter(alpha = 0.3) + 
   geom_label_repel(
-    # YOUR CODE HERE
+    data = wrong_status,
+    mapping = aes(label = name),
+    color = "red"
     ) +
   geom_point(
     data = emily_2005,
@@ -218,8 +232,13 @@ replot_no_emily_label <- labs(
     subtitle = "With mistaken input from storm Emily 2005 removed",
     caption = "Data from storms dataframe"
 )
-(replot_no_emily_plot <- storms
-  # YOUR CODE HERE
+(replot_no_emily_plot <- storms |> 
+  filter(
+    !((name == 'Emily') & (year == 2005) & (month == 7) & (day == 20) & (hour == 18))
+    ) |> 
+    ggplot(mapping = aes(x = wind, y = status)) +
+    geom_jitter(alpha = 0.3) + 
+    replot_no_emily_label
 )
 ```
 ```{r error=TRUE}
@@ -274,8 +293,29 @@ We can plot it and label where the corrected data point for `Emily` goes in red 
 correct_emily <- new2_storms |>
   filter(( (name == 'Emily') & (year == 2005) & (month == 7) & (day == 20) & (hour == 18)))
 
-(correct_emily_plot <- new2_storms
-  # YOUR CODE HERE
+
+(correct_emily_plot <- new2_storms |> 
+    filter(
+      !((name == 'Emily') & (year == 2005) & (month == 7) & (day == 20) & (hour == 18))
+    ) |>
+  ggplot(mapping = aes(x = wind, y = status)) +
+    geom_jitter(alpha = 0.3) +
+    geom_label_repel(
+      data = correct_emily, 
+      mapping = aes(label = name),
+      color = "red"
+    ) +
+    geom_point(
+      data = correct_emily,
+      color = "red"
+    ) +
+    labs(
+      x = "Maximum sustained wind speed (knot)",
+      y = "Storm status, with no particular order",
+      title = "The status of a storm provides information on the wind speed",
+      subtitle = "With storm Emily 2005 CORRECTED, highlighted and labeled",
+      caption = "Data from storms dataframe"
+    )
 )
 ```
 ```{r error=TRUE}
