@@ -327,11 +327,14 @@ Using `geom_density_ridges` shows distributions better than just the scatter plo
 ```{r error=TRUE, tags=c()}
 (ridges_plot <- new2_storms |>
   ggplot(mapping = aes(
-  # YOUR CODE HERE
+    x = wind,
+    y = status,
+    color = status,
+    fill = status
     )
   ) +
   geom_density_ridges(
-  # YOUR CODE HERE
+    alpha = 0.5,
     show.legend = FALSE
     ) +
   scale_x_continuous(breaks = seq(10, 170, 20)) +
@@ -363,26 +366,35 @@ category_plot_labels <- labs(
     caption = "Data from storms dataframe"
   )
 
-(category_jitter_plot <- new2_storms
-  # YOUR CODE HERE
+(category_jitter_plot <- new2_storms |>
+  filter(status == "hurricane")
   |> ggplot(
-  # YOUR CODE HERE
+      mapping = aes(x = wind, y = factor_cat, color = factor_cat)
     ) +                                   
-  # YOUR CODE HERE
+    geom_jitter() +
   theme(legend.position = "bottom") +
   guides(
     color = guide_legend(
       title = "Category",
       nrow = 1
       )
-    )
+    ) +
+    category_plot_labels
 )
 
-(category_ridges_plot <- new2_storms
-  # YOUR CODE HERE
+(category_ridges_plot <- new2_storms |>
+  filter(status == "hurricane")
+  |> ggplot(
+      mapping = aes(x = wind, y = factor_cat, color = factor_cat, fill = factor_cat)
+    ) +                                   
+    geom_density_ridges(
+      alpha = 0.5,
+      show.legend = FALSE
+      ) + 
+    category_plot_labels
 )
 
-#category_jitter_plot + category_ridges_plot
+category_jitter_plot + category_ridges_plot
 ```
 ```{r error=TRUE}
 . = ottr::check("tests/SimpleLearning0.R")
@@ -391,8 +403,14 @@ category_plot_labels <- labs(
 The pattern indicates that data are boxed in, most likely artificially, as there is no way storms box themselves in. Indeed, the notion of category is a concept designed to help human understanding. We can get more details concerning the criteria, even if we know nothing *a priori* about what the rules are, by finding the boundaries defining each category. We can group the data by the values in `category`, then find the maximal and minimal of the `wind` value for each group, then order the resulting rows in increasing order of the `category`.
 
 ```{r error=TRUE, tags=c()}
-(new2_storms_summary <- new2_storms
-  # YOUR CODE HERE
+(new2_storms_summary <- new2_storms |>
+   # group_by(category) |>
+   summarize(
+     .by = category,
+     min_wind = min(wind),
+     max_wind = max(wind)
+   ) |>
+   arrange(category)
 )
 ```
 ```{r error=TRUE}
@@ -408,23 +426,31 @@ pressure_plot_x_scale <- scale_x_continuous(
 
 pressure_plot_labels <- 
   labs(                                          
-# YOUR CODE HERE
+    x = "Atmospherical pressure (bars)",
+    y = "Saffir-Simpson hurricane category",
+    title = "Low pressure breed strong storms",
+    caption = "Data from storms dataframe"
 )
 
 (pressure_box_plot <- new2_storms |>
   ggplot(
-  # YOUR CODE HERE
+    mapping = aes(x = pressure, y = factor_cat)
   ) +                                             
-  # YOUR CODE HERE
+    geom_boxplot() +
   pressure_plot_labels +
   pressure_plot_x_scale
 )
 
-(pressure_ridges_plot <- new2_storms
-# YOUR CODE HERE
+(pressure_ridges_plot <- new2_storms |>
+  ggplot(
+    mapping = aes(x = pressure, y = factor_cat)
+  ) +                                             
+    geom_density_ridges(alpha = 0.5) +
+  pressure_plot_labels +
+  pressure_plot_x_scale
 )
 
-#pressure_box + pressure_ridges
+pressure_box_plot + pressure_ridges_plot
 ```
 ```{r error=TRUE}
 . = ottr::check("tests/SimpleLearning2.R")
@@ -482,14 +508,18 @@ We can look at the number of storms in each year using a bar diagram, colored to
 ```{r error=TRUE, tags=c()}
 storm_count_labels <-
   labs(                                    
-# YOUR CODE HERE
+    x = "Year, 1975 -- 2021",
+    y = "Number of storms in a year",
+    title = "Upward trend of storms and their intensity from 1975 to 2021",
+    subtitle = "With natural variations throughout the years",
+    caption = "Data from storms dataframe"
   )
 
 (storm_count_plot <- storms_by_storm |>
   ggplot(
- # YOUR CODE HERE
+    mapping = aes(x = year, fill = factor_max_cat)
     ) +
- # YOUR CODE HERE
+    geom_bar(color = "black") +
   scale_fill_discrete(name = "Maximal category") +
   storm_count_labels
 )
@@ -511,14 +541,14 @@ storm_in_year_labels <-
     caption = "Data from storms dataframe"
   )
 
-(storms_in_year_plot <- storms_by_storm
-  # YOUR CODE HERE
+(storms_in_year_plot <- storms_by_storm |>
+    filter(year == 2021)
   |> ggplot(
-  # YOUR CODE HERE
+      mapping = aes(x = first_day, y = name, color = factor_max_cat)
     ) +                                 
   geom_point() +
   geom_segment(
-  # YOUR CODE HERE
+    mapping = aes(xend = last_day, yend = name, color = factor_max_cat)
     ) +                                 
   scale_x_date(
     name = NULL,
@@ -540,14 +570,18 @@ We can also look at the number of storms in terms of their lifetime duration, to
 ```{r error=TRUE, tags=c()}
 duration_vs_category_bar_labels <-
   labs(                                          
-  # YOUR CODE HERE
+    x = "Lifetime of storms (days)",
+    y = "Number of storms",
+    title = "Stronger storms tend to last longer",
+    subtitle = "Or, it takes time for a storm to become strong",
+    caption = "Data from storms dataframe"
   )
 
 (duration_vs_category_bar_plot <- storms_by_storm |>
   ggplot(
-  # YOUR CODE HERE
+    mapping = aes(x = days, fill = factor_max_cat)
     ) +              
-  # YOUR CODE HERE
+    geom_bar(color = "black") +
   theme(legend.position = "bottom") +            
   guides(
     fill = guide_legend(
@@ -567,11 +601,31 @@ Or with a combined boxplot and ridges plot
 ```{r error=TRUE, tags=c()}
 duration_vs_category_labels <- 
   labs(                                                      
-  # YOUR CODE HERE
+    x = "Lifetime of storms (days)",
+    y = "Maximal category a storm reaches",
+    title = "Stronger storms tend to last longer",
+    subtitle = "Or, it takes time for a storm to become strong",
+    caption = "Data from storms dataframe",
 )
 
-(box_ridges_combined_plot <- storms_by_storm
-  # YOUR CODE HERE
+(box_ridges_combined_plot <- storms_by_storm |>
+  ggplot(mapping = aes(x = days, y = factor_max_cat)) +
+    geom_boxplot() +
+    geom_density_ridges(
+      mapping = aes(fill = factor_max_cat), 
+      color = "black", 
+      alpha = 0.5,
+      ) +
+    duration_vs_category_labels +
+    guides(
+      fill = guide_legend(
+        title = "Maximal category",
+        label.position = "top",
+        nrow = 1
+      )
+    ) +
+    theme(legend.position = "bottom")
+    
 )
 ```
 ```{r error=TRUE}
